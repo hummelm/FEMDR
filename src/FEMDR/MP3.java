@@ -1,4 +1,4 @@
-package EMDR;
+package FEMDR;
 
 /*
  * FEMDR - Free (open source) Tool for EMDR

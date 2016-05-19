@@ -1,8 +1,4 @@
-package EMDR;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
+package FEMDR;
 /*
  * FEMDR - Free (open source) Tool for EMDR
  * Copyright(C) Michel Hummel 
@@ -24,6 +20,10 @@ import javax.swing.JOptionPane;
  * @author      Michel Hummel
  * @version     1
  */
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public  class  Speed {
 
 	static int step = 1000/120;
