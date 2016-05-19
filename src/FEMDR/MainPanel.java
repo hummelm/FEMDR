@@ -52,7 +52,7 @@ public class MainPanel {
 
             //default title and icon
             JOptionPane.showMessageDialog(frame,
-    				" FEMDR V0.1 - RC1\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
+    				" FEMDR V1.0 - RC1\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
 
             updateScreen updateThread = me.new updateScreen();
             updateThread.start();

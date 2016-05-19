@@ -45,7 +45,7 @@ public  class  Speed {
 		//inverse pause
 		pause = true;
 		JOptionPane.showMessageDialog(frame,
-				" FEMDR V0.1 - RC1\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
+				" FEMDR V1.0 - RC3\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
 		pause = false;
 	}
 
