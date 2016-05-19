@@ -36,25 +36,35 @@ import javazoom.jl.player.Player;
  *
  */
 public class MP3 {
-    private String filename;
+
+	private String filename = "bip4.mp3";
     private Player player;
     
-    static public String goTo = "bip4.mp3";
-    
-	ClassLoader cl = MP3.class.getClassLoader();
-	InputStream fis = MP3.class.getClassLoader().getResourceAsStream(goTo);
-	BufferedInputStream bis = new BufferedInputStream(fis);
+	BufferedInputStream bis = new BufferedInputStream(
+			MP3.class.getClassLoader().getResourceAsStream(
+					filename
+					));
 
-    // constructor that takes the name of an MP3 file
-    public MP3(String filename) {
-        this.filename = filename;
-    }
-    
+	
+    public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
+		bis = new BufferedInputStream(
+				MP3.class.getClassLoader().getResourceAsStream(
+						filename
+						));
+	}
+	
     public MP3() {
-        this.filename = goTo;
     }
 
-    public void close() { if (player != null) player.close(); }
+    public void close() { 
+    	if (player != null) 
+    		player.close();
+    	}
 
     // play the MP3 file to the sound card
     public void play() {
@@ -64,7 +74,9 @@ public class MP3 {
     			try { 
 
     				player = new Player(bis);
-    				player.play(); }
+    				player.play(); 
+    				close();	
+    			}
     			catch (Exception e) {
     				System.out.println(e); 
     				}

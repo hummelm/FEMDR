@@ -54,10 +54,10 @@ public class MainPanel {
             frame.setVisible(true);
             
             MainPanel me = new MainPanel();
-
+            String strDiag = " FEMDR V"+Prop.getVersion()+" - "+Prop.getRevision()+"\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients";
             //default title and icon
             JOptionPane.showMessageDialog(frame,
-    				" FEMDR V1.0 - RC1\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
+            		strDiag);
 
             updateScreen updateThread = me.new updateScreen();
             updateThread.start();

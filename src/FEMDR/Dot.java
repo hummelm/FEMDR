@@ -51,6 +51,9 @@ public class Dot {
     
 	// Will be init in contructor
 	int beepPos;
+	
+	//sound to play
+	MP3 audio;
     
     
 
@@ -95,13 +98,13 @@ public class Dot {
     		if (center.x >= (xmax-beepPos) && step > 0) {
     			// Beep and wait for new ask
     			toBeep = false;
-    			new MP3().play();
+    	    	new MP3().play();
     		}
     		// go on left
     		if (center.x <= 0+beepPos && step < 0) {
     			// Beep and wait for new ask
     			toBeep = false;
-    			new MP3().play();
+    	    	new MP3().play();
     		}
     	}
 
@@ -150,6 +153,7 @@ public class Dot {
     	// beep beepAtPercOfWidth% before the edge
     	beepPos = xmax*beepAtPercOfWidth/100;
         // force MP3 load
-		new MP3().play();
+    	new MP3().play();
+    	
     }
 }

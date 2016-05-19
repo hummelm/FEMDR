@@ -47,8 +47,10 @@ public  class  Speed {
 	synchronized static void Pause(JFrame frame) {
 		//inverse pause
 		pause = true;
+        String strDiag = " FEMDR V"+Prop.getVersion()+" - "+Prop.getRevision()+"\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients";
+
 		JOptionPane.showMessageDialog(frame,
-				" FEMDR V1.0 - RC3\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients");
+				strDiag);
 		pause = false;
 	}
 
