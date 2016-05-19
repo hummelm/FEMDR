@@ -30,12 +30,20 @@ import java.net.URL;
 
 import javazoom.jl.player.Player;
 
-
+/**
+ * 
+ * @author Michel Hummel
+ *
+ */
 public class MP3 {
     private String filename;
     private Player player;
     
     static public String goTo = "bip4.mp3";
+    
+	ClassLoader cl = MP3.class.getClassLoader();
+	InputStream fis = MP3.class.getClassLoader().getResourceAsStream(goTo);
+	BufferedInputStream bis = new BufferedInputStream(fis);
 
     // constructor that takes the name of an MP3 file
     public MP3(String filename) {
@@ -44,33 +52,24 @@ public class MP3 {
     
     public MP3() {
         this.filename = goTo;
-        try {
-        	MP3.class.getClassLoader();
-        	ClassLoader cl = MP3.class.getClassLoader();
-        	InputStream fis = MP3.class.getClassLoader().getResourceAsStream(goTo);
- //        	BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-//            FileInputStream fis     = new FileInputStream(filename);
-
-        	BufferedInputStream bis = new BufferedInputStream(fis);
-            player = new Player(bis);
-        }
-        catch (Exception e) {
-            System.out.println("Problem playing file " + filename);
-            System.out.println(e);
-        }
     }
 
     public void close() { if (player != null) player.close(); }
 
     // play the MP3 file to the sound card
     public void play() {
-        // run in new thread to play in background
-        new Thread() {
-            public void run() {
-                try { player.play(); }
-                catch (Exception e) { System.out.println(e); }
-            }
-        }.start();
+    	// run in new thread to play in background
+    	new Thread() {
+    		public void run() {
+    			try { 
+
+    				player = new Player(bis);
+    				player.play(); }
+    			catch (Exception e) {
+    				System.out.println(e); 
+    				}
+    		}
+    	}.start();
     }
 }
 

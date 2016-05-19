@@ -24,6 +24,9 @@ package FEMDR;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * @author Michel Hummel
+ */
 public  class  Speed {
 
 	static int step = 1000/120;

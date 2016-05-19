@@ -30,6 +30,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Michel Hummel
+ *
+ */
 public class MainPanel {
 	static JPanel draw;
 

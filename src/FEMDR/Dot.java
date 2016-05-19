@@ -26,41 +26,86 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-
+/**
+ * 
+ * @author Michel Hummel
+ *
+ */
 public class Dot {
 
+	// Radius of the dot
+    private int radius = 20;
+
+	// Center of the dot
     private Point center = new Point(50, 50);
+    
+    // x, y resolution
     Rectangle bounds;
     
+    // Max X
     int xmax =  0;
     
     boolean toBeep = true;
+    // Beep X% before to hit the border
+    int beepAtPercOfWidth = 10;
+    
+	// Will be init in contructor
+	int beepPos;
+    
     
 
-
+	/*
+	 * return center
+	 */
     public Point getCenter() {
         return center;
     }
     
+	/*
+	 * update the position of the dot
+	 * beep at the request position 
+	 */
     public void update() {
     	center.x += Speed.getStep();
     	
+    	//BEEP ON CENTER
+    	//*****************************************************
+    	/*
     	if (toBeep) {
     		// on augmente
     		if (Speed.getStep()>0) {
     			if (center.x >= bounds.width/2) {
-    	    		new MP3().play();
+    				new MP3().play();
     	    		toBeep = false;
     			}
    			// on repart
     		}else{
     			if (center.x <= bounds.width/2) {
-    	    		new MP3().play();
+    				new MP3().play();
     	    		toBeep = false;
     			}    			
     		}
     	}
-    	
+    	 */
+    	//**********************************************************
+    	// need to beep again
+    	int step = Speed.getStep();
+    	if(toBeep) {
+    		// go on right 
+    		if (center.x >= (xmax-beepPos) && step > 0) {
+    			// Beep and wait for new ask
+    			toBeep = false;
+    			new MP3().play();
+    		}
+    		// go on left
+    		if (center.x <= 0+beepPos && step < 0) {
+    			// Beep and wait for new ask
+    			toBeep = false;
+    			new MP3().play();
+    		}
+    	}
+
+
     	if (center.x >= xmax) {
     		// need to beep again
     		toBeep = true;
@@ -82,12 +127,17 @@ public class Dot {
     	
     }
 
-    private int radius = 20;
 
+    /*
+     * return the radius
+     */
     public int getRadius() {
         return radius;
     }
     
+    /*
+     * Constructor
+     */
     public Dot() {
     	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice[] gs = ge.getScreenDevices();
@@ -96,8 +146,10 @@ public class Dot {
         xmax = bounds.width;
         center.x = 0;
         center.y = bounds.height/2;
+
+    	// beep beepAtPercOfWidth% before the edge
+    	beepPos = xmax*beepAtPercOfWidth/100;
         // force MP3 load
 		new MP3().play();
-
     }
 }

@@ -25,15 +25,24 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-
+/**
+ * The Board of the application
+ * @author Michel Hummel
+ */
+@SuppressWarnings("serial")
 public class Board extends JPanel {
 
+	// the dot to display
     private Dot player = new Dot();
 
     public Board(){
         setBackground(Color.BLACK);
     }
 
+    /*
+     * Update the contents 
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     public void paintComponent(Graphics g){  
         super.paintComponent(g);
     	if (! Speed.isPause() ) {
