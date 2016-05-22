@@ -47,11 +47,50 @@ public  class  Speed {
 	synchronized static void Pause(JFrame frame) {
 		//inverse pause
 		pause = true;
-        String strDiag = " FEMDR V"+Prop.getVersion()+" - "+Prop.getRevision()+"\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients";
+		try {
+			String strDiag = " FEMDR V"+Prop.getVersion()+" - "+Prop.getRevision()+"\n Open source (Free) EMDR tool\n Written by Michel Hummel\n To help Zéév Maoz and its patients";
 
-		JOptionPane.showMessageDialog(frame,
-				strDiag);
-		pause = false;
+			Object[] options = {"Show options",
+					"Continue ping pong",
+					"Quit FEMDR"
+			};
+			int n = JOptionPane.showOptionDialog(frame,
+					strDiag,
+					"Options panel",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.INFORMATION_MESSAGE,
+					null,
+					options,
+					options[1]);
+			
+			if (n == 0) {
+//				OptionDialog.createAndShowGUI(frame);
+//				while (true) {
+//					if (frame.isVisible()) {
+//						// do the validation
+//						try {
+//							Thread.sleep(100);
+//						} catch (InterruptedException e1) {
+//							break;
+//						}
+//					}
+//				}
+//				System.out.println("return option");
+//	            frame.setVisible(true);
+//				JOptionPane.showMessageDialog(frame,
+//								strDiag);
+			}else if (n == 1) {
+				//continue
+			}else if (n == 2) {
+				//Quit
+				System.exit(0);
+			}
+		} catch (Exception e) {
+
+		}finally {
+			pause = false;
+		}
+
 	}
 
 	synchronized static boolean isPause() {

@@ -37,7 +37,9 @@ import javazoom.jl.player.Player;
  */
 public class MP3 {
 
-	private String filename = "bip4.mp3";
+//	private String filename = "default.mp3";
+	private String filename = Prop.getBeep();
+
     private Player player;
     
 	BufferedInputStream bis = new BufferedInputStream(

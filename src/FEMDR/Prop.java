@@ -50,6 +50,17 @@ public final class Prop {
 		}
 		return revision;
 	}
+
+	static String getBeep() {
+		String revision = "";
+		try {
+			revision = (String) getInstance().properties.get("FEMDR.audio.beep");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return revision;
+	}
 	
     public static void main(String[] args) {
 		getVersion();

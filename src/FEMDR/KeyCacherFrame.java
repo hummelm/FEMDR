@@ -60,26 +60,17 @@ public class KeyCacherFrame extends JFrame
     	    //FULLSCREEN MODE
     	    dispose();
     	    setExtendedState(JFrame.MAXIMIZED_BOTH); 
+ 
     	    setUndecorated(true);
-    	    
-    	    
-    	    
-    	    
-    	    
-    	    
-    	    setUndecorated(true);
-//    	    
-//    	    if (gd.isFullScreenSupported()) {
-//    	        setUndecorated(true);
-//    	        gd.setFullScreenWindow(this);
-//    	    } else {
-//    	        setVisible(true);
-//    	    }
+ 
     	    final JFrame me = this;
     	
             // on SPACE pause the application
             getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
                 KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0), "Pause"); //$NON-NLS-1$
+         // on ENTER pause the application
+            getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+                KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "Pause"); //$NON-NLS-1$
             getRootPane().getActionMap().put("Pause", new AbstractAction(){ //$NON-NLS-1$
                 /**
 				 * 
