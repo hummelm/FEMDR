@@ -47,7 +47,7 @@ public class Dot {
     
     boolean toBeep = true;
     // Beep X% before to hit the border
-    int beepAtPercOfWidth = 10;
+    int beepAtPercOfWidth = 25;
     
 	// Will be init in contructor
 	int beepPos;
