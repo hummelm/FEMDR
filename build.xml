@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project FEMDR with Jar-in-Jar Loader">
+<project default="create_run_jar" name="FEMDR">
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
-    <target name="create_run_jar">
+    <target name="compile">
+    <javac target="1.6" srcdir="src" destdir="bin">
+    	<classpath path="lib/jl1.0.1.jar"/>
+    </javac>
+    </target>
+    <target name="create_run_jar" depends="compile">
         <jar destfile="FEMDR-V1.0-RC5.jar">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
@@ -13,6 +18,7 @@
             <zipfileset src="jar-in-jar-loader.zip"/>
             <fileset dir="bin"/>
             <zipfileset dir="lib" includes="jl1.0.1.jar"/>
+            <zipfileset dir="resources"/>
         </jar>
     </target>
 </project>
