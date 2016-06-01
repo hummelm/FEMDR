@@ -37,6 +37,7 @@ public class Board extends JPanel {
 
     public Board(){
         setBackground(Color.BLACK);
+//        setDoubleBuffered(true);
     }
 
     /*
@@ -51,5 +52,7 @@ public class Board extends JPanel {
         g.fillOval(player.getCenter().x, player.getCenter().y,
              player.getRadius(), player.getRadius());
     	}
+//    	super.setDoubleBuffered(true);
+
     } 
 }

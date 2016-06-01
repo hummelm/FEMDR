@@ -33,6 +33,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
+import FEMDR.Speed;
 
 /**
  * A JFrame which catch key stroke
@@ -174,24 +175,34 @@ public class KeyCacherFrame extends JFrame
     
     public boolean Pause(JFrame frame)
     {
-    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     	
     	//on pause get out from fullscreen mode
     	// to allow the display of modal window
-    	//TODO : create a set windowed method
-    	frame.dispose();
-    	frame.setUndecorated(false);
-    	gd.setFullScreenWindow(null);
-    	frame.setVisible(true);
+//    	setFullSreen();
+
     	Speed.Pause(frame);
     	
     	//back to fullscreen mode
-    	//TODO : create a set fullscreen method
-    	frame.dispose();
-    	frame.setUndecorated(true);
-    	gd.setFullScreenWindow(frame);
-    	frame.setVisible(true);
+//    	unsetFullSreen();
+
     	return true;
     	
     }
-}
+    
+    public void setFullSreen() {
+    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    	this.dispose();
+    	this.setUndecorated(false);
+    	gd.setFullScreenWindow(null);
+    	this.setVisible(true);
+    	this.pack();
+    }
+    
+    public void unsetFullSreen() {
+    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    	this.dispose();
+    	gd.setFullScreenWindow(this);
+    	this.setUndecorated(true);
+    	this.setVisible(true);
+    }
+   }

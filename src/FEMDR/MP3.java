@@ -46,7 +46,17 @@ public class MP3 {
 			MP3.class.getClassLoader().getResourceAsStream(
 					filename
 					));
-
+	
+	BufferedInputStream bis_left = new BufferedInputStream(
+			MP3.class.getClassLoader().getResourceAsStream(
+					filename.substring(0, filename.length()-4).concat("_left.mp3")
+					));
+	
+	BufferedInputStream bis_right = new BufferedInputStream(
+			MP3.class.getClassLoader().getResourceAsStream(
+					filename.substring(0, filename.length()-4).concat("_right.mp3")
+					));
+	
 	
     public String getFilename() {
 		return filename;
@@ -61,6 +71,8 @@ public class MP3 {
 	}
 	
     public MP3() {
+    	System.out.println(filename.substring(0, filename.length()-4).concat("_left.mp3"));
+
     }
 
     public void close() { 

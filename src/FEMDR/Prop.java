@@ -52,14 +52,14 @@ public final class Prop {
 	}
 
 	static String getBeep() {
-		String revision = "";
+		String beep = "";
 		try {
-			revision = (String) getInstance().properties.get("FEMDR.audio.beep");
+			beep = (String) getInstance().properties.get("FEMDR.audio.beep");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return revision;
+		return beep;
 	}
 	
     public static void main(String[] args) {

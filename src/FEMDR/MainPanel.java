@@ -40,6 +40,7 @@ public class MainPanel {
 
     public static void main(String[] args) throws InterruptedException {
             JFrame frame = new KeyCacherFrame();
+            frame.setIgnoreRepaint(true);
             
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             GraphicsDevice[] gs = ge.getScreenDevices();
@@ -81,6 +82,7 @@ public class MainPanel {
 		public void run() {
 			int timems = 1000/120;
 			while(true) {
+				
 			    draw.updateUI();
 			    try {
 					Thread.sleep(timems);
