@@ -174,7 +174,23 @@ public class KeyCacherFrame extends JFrame
     
     public boolean Pause(JFrame frame)
     {
+    	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    	
+    	//on pause get out from fullscreen mode
+    	// to allow the display of modal window
+    	//TODO : create a set windowed method
+    	frame.dispose();
+    	frame.setUndecorated(false);
+    	gd.setFullScreenWindow(null);
+    	frame.setVisible(true);
     	Speed.Pause(frame);
+    	
+    	//back to fullscreen mode
+    	//TODO : create a set fullscreen method
+    	frame.dispose();
+    	frame.setUndecorated(true);
+    	gd.setFullScreenWindow(frame);
+    	frame.setVisible(true);
     	return true;
     	
     }
