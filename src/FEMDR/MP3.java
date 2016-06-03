@@ -24,9 +24,22 @@ package FEMDR;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.net.URL;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javazoom.jl.player.Player;
 
@@ -41,21 +54,22 @@ public class MP3 {
 	private String filename = Prop.getBeep();
 
     private Player player;
-    
+
 	BufferedInputStream bis = new BufferedInputStream(
 			MP3.class.getClassLoader().getResourceAsStream(
 					filename
 					));
 	
-	BufferedInputStream bis_left = new BufferedInputStream(
+	BufferedInputStream bisLeft = new BufferedInputStream(
 			MP3.class.getClassLoader().getResourceAsStream(
-					filename.substring(0, filename.length()-4).concat("_left.mp3")
+					filename.substring(0, filename.length()-4).concat("-left.mp3")
 					));
 	
-	BufferedInputStream bis_right = new BufferedInputStream(
+	BufferedInputStream bisRight = new BufferedInputStream(
 			MP3.class.getClassLoader().getResourceAsStream(
-					filename.substring(0, filename.length()-4).concat("_right.mp3")
+					filename.substring(0, filename.length()-4).concat("-right.mp3")
 					));
+
 	
 	
     public String getFilename() {
@@ -71,7 +85,7 @@ public class MP3 {
 	}
 	
     public MP3() {
-    	System.out.println(filename.substring(0, filename.length()-4).concat("_left.mp3"));
+//    	System.out.println(filename.substring(0, filename.length()-4).concat("_left.mp3"));
 
     }
 
@@ -97,5 +111,42 @@ public class MP3 {
     		}
     	}.start();
     }
+    
+    // play the MP3 file to the sound card
+    public void playLeft() {
+    	// run in new thread to play in background
+    	new Thread() {
+    		public void run() {
+    			try { 
+
+    				player = new Player(bisLeft);
+    				player.play(); 
+    				close();	
+    			}
+    			catch (Exception e) {
+    				System.out.println(e); 
+    				}
+    		}
+    	}.start();
+    }
+    
+    // play the MP3 file to the sound card
+    public void playRight() {
+    	// run in new thread to play in background
+    	new Thread() {
+    		public void run() {
+    			try { 
+
+    				player = new Player(bisRight);
+    				player.play(); 
+    				close();	
+    			}
+    			catch (Exception e) {
+    				System.out.println(e); 
+    				}
+    		}
+    	}.start();
+    }
+    
 }
 

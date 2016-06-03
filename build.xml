@@ -8,7 +8,7 @@
     </javac>
     </target>
     <target name="create_run_jar" depends="compile">
-        <jar destfile="FEMDR-V1.0-RC5.jar">
+        <jar destfile="FEMDR-V1.0-RC6.jar">
             <manifest>
                 <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
                 <attribute name="Rsrc-Main-Class" value="FEMDR.MainPanel"/>
