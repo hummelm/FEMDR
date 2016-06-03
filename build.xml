@@ -3,7 +3,7 @@
     <!--this file was created by Eclipse Runnable JAR Export Wizard-->
     <!--ANT 1.7 is required                                        -->
     <target name="compile">
-    <javac target="1.6" srcdir="src" destdir="bin">
+    <javac target="1.5" source="1.5" srcdir="src" destdir="bin">
     	<classpath path="lib/jl1.0.1.jar"/>
     </javac>
     </target>
